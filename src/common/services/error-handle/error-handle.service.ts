@@ -1,6 +1,7 @@
 import {
     BadRequestException, Injectable, InternalServerErrorException,
-    Logger, LoggerService
+    Logger, LoggerService,
+    NotFoundException
 } from '@nestjs/common';
 
 @Injectable()
@@ -13,6 +14,10 @@ export class ErrorHandleService {
         if (error.code === '23505') {
             this.logger.error('Database error:', error.detail);
             throw new BadRequestException(error.detail);
+        }
+        else if (error.status === 404) {
+            this.logger.error('Not found error:', error.message);
+            throw new NotFoundException(error.message);
         }
 
         this.logger.error('Unexpected error:', error);
