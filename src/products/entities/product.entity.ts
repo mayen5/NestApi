@@ -16,12 +16,6 @@ export class Product {
     })
     price: number;
 
-    @Column({
-        type: 'text',
-        nullable: true,
-    })
-    description: string;
-
     @Column('text', {
         unique: true,
     })
@@ -31,21 +25,6 @@ export class Product {
         default: 0,
     })
     stock: number;
-
-    @Column('text', {
-        array: true,
-        nullable: true,
-    })
-    sizes: string[];
-
-    @Column('text')
-    gender: string;
-
-    @Column('text', {
-        array: true,
-        default: [],
-    })
-    tags: string[];
 
 
     @BeforeInsert()

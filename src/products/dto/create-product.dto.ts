@@ -21,10 +21,6 @@ export class CreateProductDto {
 
     @IsString()
     @IsOptional()
-    description?: string;
-
-    @IsString()
-    @IsOptional()
     slug?: string;
 
     @IsNumber()
@@ -32,15 +28,4 @@ export class CreateProductDto {
     @IsOptional()
     stock?: number;
 
-    @IsString({ each: true })
-    @IsArray()
-    sizes: string[];
-
-    @IsIn(['men', 'women', 'kids', 'unisex'])
-    gender: string;
-
-    @IsString({ each: true })
-    @IsArray()
-    @IsOptional()
-    tags: string[];
 }
